@@ -1,0 +1,24 @@
+buildscript {
+    ext {
+        compose_version = '1.1.1'
+    }
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1"
+    }
+}
+
+plugins {
+    id 'com.android.application' version '7.1.0' apply false
+    id 'com.android.library' version '7.1.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+    id 'com.android.dynamic-feature' version '7.1.0' apply false
+}
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    autoCorrect = true
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
